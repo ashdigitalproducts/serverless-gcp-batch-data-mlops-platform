@@ -59,9 +59,9 @@ This is the "brain" of the entire platform, packaged as a single Python applicat
 
 ## <br> SQL 3. ELT Pipeline (Dataform SQLX Files)
 This code lives *inside* the Dataform repository and defines the entire Medallion Architecture in SQL for all the 3 data flows: 
-    * Creates a BigQuery External Table pointing to the raw sales Parquet files in the Bronze layer.
-    * Cleans, types, and pseudonymizes raw sales data from the external table into a Staging (Silver) table.
-    * Aggregates customer-level features (e.g., `avg_order_value`, `total_revenue`) to create a table for ML model training.
-    * Builds the final, business-ready Fact and Dimension tables for the BI dashboard.
+    1.  Creates a BigQuery External Table pointing to the raw sales Parquet files in the Bronze layer.
+    2.  Cleans, types, and pseudonymizes raw sales data from the external table into a Staging (Silver) table.
+    3.  Aggregates customer-level features (e.g., `avg_order_value`, `total_revenue`) to create a table for ML model training.
+    4.  Builds the final, business-ready Fact and Dimension tables for the BI dashboard.
 
 ---
