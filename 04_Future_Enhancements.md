@@ -45,8 +45,8 @@ This section outlines planned improvements to strengthen the reliability, cost-e
     * **Clickstream:** Replace the generator with the native **Google Analytics (GA4) to BigQuery Export**.
     * **Startup:** Connect to a live API like **Crunchbase** or **PitchBook**.
 * **Build the Other ML Models:** Use the rich data in the warehouse to build the other models we planned:
-    * **Startup Growth Model:** Use `dim_startup` to predict a startup's success.
-    * **Fraud Detection Model:** Use `fct_sales` data to build a real-time fraud detection pipeline.
+    * **Startup Growth Model:** Use Startup Dimention Table to predict a startup's success.
+    * **Fraud Detection Model:** Use Sales Fact Table data to build a real-time fraud detection pipeline.
 * **Deploy AI Agents:** Build the **"BI Bot" (Vertex AI Agent)** we discussed. This agent would be pointed at the Data Warehouse and allow a sales manager to ask in plain English, "Show me my top 5 customers in the 'North' region who are at high risk of churn."
 
 ---
