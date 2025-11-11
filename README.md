@@ -2,7 +2,13 @@
 
 This repository outlines the blueprint for a **100% serverless, end-to-end Data, ML, & AI Solution Architecture** built on Google Cloud Platform. It showcases expertise across Data Ingestion, tiered ELT, Medallion Architecture, Data Warehousing, and automated MLOps.
 
-This Solution Architecture is focused on ingesting **three distinct batch data flows** (Sales, Clickstream, and Startup Data), orchestrating their transformation, and feeding them into an automated machine learning pipeline to predict customer churn.
+This Solution Architecture is focused on ingesting **three distinct batch data flows**, listed below, orchestrating their transformation, and feeding them into an automated machine learning pipeline to make predictions.
+
+ **a)** Data about new Start-ups: API Calls made to external databases every Friday at 1 AM GMT, that contained Start-up related Data that brought in - firstly, a One-time Full Load, then subsequent Incremental Delta Loads that came in once every Friday at 1 AM GMT. 
+
+ **b)** Website Clickstreams events: 1000 Records of Website Clickstreams Data, accumulated over a period of time between 00:00 to 23:59 on that day, sent to the Platform everyday at 1 AM GMT. 
+
+ **c)** Sales Transaction Data: A new batch of Sales Transactions Data, accumulated over the previous day, sent to the Platform every day at 1 AM GMT.
 
 **NOTE:** This repository is only a descriptive write-up of the actual Design and Implementation process followed by the Architect. This repository is not intended to provide readers with the ability to fork, clone or download anything.
 
