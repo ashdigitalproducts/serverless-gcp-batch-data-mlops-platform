@@ -44,7 +44,7 @@ The Platform processes three distinct, simulated batch data flows, transforming 
 | **Triggers** | Cloud Scheduler | Provides scheduled (cron) triggers for all data generation jobs and the master orchestration service. |
 | **Data Generation** | Cloud Run Jobs (x3) | Three separate, containerized Python jobs that simulate and generate batch data for Sales, Clickstream, and Startups. |
 | **NoSQL Source** | Cloud Firestore | Acts as the "application database" (source of truth) for the Sales data flow. |
-| **Orchestration** | Cloud Run (Service) | The **"Master Orchestrator"** (`server.py`). This central service runs the end-to-end pipeline: pulls from Firestore, lands to GCS, triggers Dataform, polls for completion, and triggers the Vertex AI ML pipeline. |
+| **Orchestration** | Cloud Run (Service) | The **"Master Orchestrator"**. This central service runs the end-to-end pipeline: pulls from Firestore, lands to GCS, triggers Dataform, polls for completion, and triggers the Vertex AI ML pipeline. |
 | **Data Lake (Bronze)** | Cloud Storage (GCS) | The Bronze Layer. Stores raw, immutable data files for all three flows (Parquet for Sales, JSONL for Clickstream/Startup) before they are processed by ELT. |
 | **ELT (In-Warehouse)**| Dataform | The serverless, SQL-first transformation engine. Manages the entire Medallion pipeline (Bronze-to-Warehouse) directly within BigQuery using version-controlled SQLX files. |
 | **Data Warehouse** | BigQuery | The scalable, serverless warehouse. Hosts all Staging and final Warehouse tables (`fct_sales`, `dim_customer`, etc.) and serves as the single source of truth for both BI and MLOps. |
