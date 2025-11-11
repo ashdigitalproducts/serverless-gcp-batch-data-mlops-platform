@@ -14,19 +14,19 @@ Google Cloud forms the backbone of the platform, providing scalable and "scale-t
 
 ### Compute & Orchestration
 * **Cloud Run (Jobs):** Used for the three serverless, containerized **Data Generator** jobs (Sales, Clickstream, Startup). We only pay for the execution time.
-* **Cloud Run (Service):** Hosts the central **"Master Orchestrator"** (`server.py`). It scales to zero when idle and scales up on demand to run the entire batch pipeline.
+* **Cloud Run (Service):** Hosts the central **"Master Orchestrator"**. It scales to zero when idle and scales up on demand to run the entire batch pipeline.
 * **Cloud Scheduler:** Provides the serverless cron triggers that initiate all generator jobs and the Master Orchestrator service.
 
 ### Storage & Database
 * **Cloud Firestore:** A serverless NoSQL database, used as the "application source" for the Sales data flow.
-* **Cloud Storage (GCS):** The central data lake, implementing the **Bronze Layer** for all three data flows. Also used for staging MLOps artifacts (`.json` pipeline specs).
+* **Cloud Storage (GCS):** The central data lake, implementing the **Bronze Layer** for all three data flows. Also used for staging MLOps artifacts.
 
 ### Data Warehousing & Transformation
 * **BigQuery:** The scalable, serverless **Data Warehouse**. Used for external tables, the Staging (Silver) layer, and the final Warehouse (Gold) tables. It's the single source of truth for BI and ML.
 * **Dataform:** The serverless, **SQLX-based ELT** engine. It orchestrates the entire transformation pipeline *inside* BigQuery, moving data from Bronze to the final Warehouse tables.
 
 ### Machine Learning (MLOps)
-* **Vertex AI Pipelines:** The managed service for orchestrating ML workflows. Our Master Orchestrator triggers a pipeline defined by a `.json` spec file.
+* **Vertex AI Pipelines:** The managed service for orchestrating ML workflows. Our Master Orchestrator triggers a pipeline defined by a spec file.
 * **Vertex AI Model Registry (Planned):** The central repository for versioning and managing trained ML models.
 * **Vertex AI Batch Prediction (Planned):** The serverless job for running model inference on our entire BigQuery warehouse.
 
@@ -36,7 +36,7 @@ Google Cloud forms the backbone of the platform, providing scalable and "scale-t
 ---
 
 ## 🐍 Key Python Libraries
-These libraries are the building blocks of the Master Orchestrator (`server.py`) and Data Generator (`main.py`) containers.
+These libraries are the building blocks of the Master Orchestrator and Data Generator containers.
 
 ### Core & Web Framework
 * **Flask:** A lightweight web framework used to create the HTTP endpoint for the Master Orchestrator service.
