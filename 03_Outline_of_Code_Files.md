@@ -52,7 +52,7 @@ This is the "brain" of the entire platform, packaged as a single Python applicat
     6.  **Response:** The service returns a `200 OK` JSON payload if all steps (up to pipeline submission) succeed, or a `500` error if any step fails.
 
 ### <br> 2.2. Orchestrator Dependencies  
-* **`requirements.txt`:** Lists all necessary Python libraries (e.g., `flask`, `google-cloud-firestore`, `google-cloud-storage`, `google-cloud-aiplatform`, `pandas`, `pyarrow`, `requests`).
+* **`Requirements File`:** Lists all necessary Python libraries (e.g., `flask`, `google-cloud-firestore`, `google-cloud-storage`, `google-cloud-aiplatform`, `pandas`, `pyarrow`, `requests`).
 * **`Dockerfile`:** Defines the container image, installing all dependencies and setting the `gunicorn` web server as the entrypoint to run the Flask app.
 
 ---
