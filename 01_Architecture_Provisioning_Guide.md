@@ -2,8 +2,7 @@
 The following clearly describes all the GCP Services and Resources provisioned for this 100% Serverless Batch Data & MLOps Platform.
 
 ## <br> 🚀 1. Cloud Project Configuration
-* **Project ID:** `winter-days-nov-2025`
-* **Region:** `us-central1` (Used for all regional services like Cloud Run, Dataform, etc.)
+Setup the GCP Project and set the regional context to the target Region for all subsequent deployments.
 
 ---
 
