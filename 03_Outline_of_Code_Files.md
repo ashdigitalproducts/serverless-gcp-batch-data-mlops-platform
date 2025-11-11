@@ -14,25 +14,16 @@ Three separate, containerized Python jobs are responsible for simulating and ing
 * **Logic:**
     * Generates a random batch of records.
     * Creates a rich record with derived fields and applies hashing to PII fields.
-    * Saves timestamps as **ISO-formatted strings** for consistent parsing.
-    * Uses the Firestore client library to write records to the target sales collection.
-    * Runs using a dedicated, least-privilege service account for writing to Firestore.
 
 ### <br> 1.2. The Clickstream Data Generator  
 * **Purpose:** Generates data and writes it directly to the **GCS Bronze Layer**.
 * **Logic:**
     * Generates a batch of JSONL records.
-    * Enriches the data with new fields.
-    * Uploads the final file to the folder in GCS.
-    * Runs using a dedicated, least-privilege service account for writing to GCS.
-
+   
 ### <br> 1.3. The Startup Data Generator  
 * **Purpose:** Generates data and writes it directly to the **GCS Bronze Layer**.
 * **Logic:**
     * Generates a batch of JSONL records.
-    * Enriches the data with new fields.
-    * Uploads the final file to the folder in GCS.
-    * Runs using a dedicated, least-privilege service account for writing to GCS.
 
 ---
 
@@ -49,11 +40,10 @@ This is the "brain" of the entire platform, packaged as a single Python applicat
     3.  **Dataform Trigger:** Uses the compilation ID from Step 2 to make a *second* HTTP request, triggering a new Dataform workflow. It specifies a dedicated Dataform execution SA (as required by IAM "act as" security).
     4.  **Poll for Completion:** Enters a loop, pinging the Dataform API until the workflow returns `SUCCEEDED` or `FAILED`.
     5.  **Trigger MLOps:** If Dataform succeeds, this function uses the Vertex AI SDK to submit the training pipeline, referencing a compiled pipeline spec (`.json`) from GCS.
-    6.  **Response:** The service returns a `200 OK` JSON payload if all steps (up to pipeline submission) succeed, or a `500` error if any step fails.
 
 ### <br> 2.2. Orchestrator Dependencies  
-* **`Requirements File`:** Lists all necessary Python libraries (e.g., `flask`, `google-cloud-firestore`, `google-cloud-storage`, `google-cloud-aiplatform`, `pandas`, `pyarrow`, `requests`).
-* **`Dockerfile`:** Defines the container image, installing all dependencies and setting the `gunicorn` web server as the entrypoint to run the Flask app.
+* **`Requirements File`:** Lists all necessary Python libraries.
+* **`Dockerfile`:** Defines the container image, installing all dependencies.
 
 ---
 
